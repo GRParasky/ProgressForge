@@ -13,7 +13,8 @@ public class Main {
             System.out.println("------------\n" +
                     "1 - Adicionar tarefa\n" +
                     "2 - Ler tarefas\n" +
-                    "3 - Sair\n" +
+                    "3 - Atualizar tarefa\n" +
+                    "9 - Sair\n" +
                     "------------"
             );
             System.out.println("Escolha a opção: ");
@@ -29,6 +30,10 @@ public class Main {
                     System.out.println(tasks);
                     break;
                 case 3:
+                    for (Object taskCreated : tasks) {
+                        System.out.println(taskCreated);
+                    }
+                case 9:
                     systemRunning = false;
             }
         }
