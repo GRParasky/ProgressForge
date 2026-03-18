@@ -34,6 +34,10 @@ public class Main {
                     }
                     break;
                 case 3:
+                    if(tasks.size() == 0){
+                        System.out.println("Não há nenhuma tarefa salva");
+                        break;
+                    }
                     for (int index = 0; index < tasks.size(); index++) {
                         Integer viewIndex = index + 1;
                         System.out.println(viewIndex + " - " + tasks.get(index));
