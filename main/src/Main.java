@@ -18,12 +18,13 @@ public class Main {
                     "------------"
             );
             System.out.println("Escolha a opção: ");
-            int option = scanner.nextInt();
+            String input = scanner.nextLine();
+            int option = Integer.parseInt(input);
 
             switch(option){
                 case 1:
                     System.out.println("Informe a tarefa a ser adicionada: ");
-                    String task = scanner.next();
+                    String task = scanner.nextLine();
                     tasks.add(task);
                     break;
                 case 2:
