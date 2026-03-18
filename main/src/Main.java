@@ -28,7 +28,9 @@ public class Main {
                     tasks.add(task);
                     break;
                 case 2:
-                    System.out.println(tasks);
+                    for (Object taskCreated : tasks) {
+                        System.out.println(taskCreated);
+                    }
                     break;
                 case 3:
                     for (Object taskCreated : tasks) {
