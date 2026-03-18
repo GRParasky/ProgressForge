@@ -28,14 +28,32 @@ public class Main {
                     tasks.add(task);
                     break;
                 case 2:
-                    for (Object taskCreated : tasks) {
-                        System.out.println(taskCreated);
+                    for (int index = 0; index < tasks.size(); index++) {
+                        Integer viewIndex = index + 1;
+                        System.out.println(viewIndex + " - " + tasks.get(index));
                     }
                     break;
                 case 3:
-                    for (Object taskCreated : tasks) {
-                        System.out.println(taskCreated);
+                    for (int index = 0; index < tasks.size(); index++) {
+                        Integer viewIndex = index + 1;
+                        System.out.println(viewIndex + " - " + tasks.get(index));
                     }
+                    System.out.println("Informe o número da tarefa a ser atualizada");
+                    String indexOfTaskFiltered = scanner.nextLine();
+                    int indexOfTaskFilteredConverted = Integer.parseInt(indexOfTaskFiltered);
+                    int indexOfTaskFilteredForSearch = Integer.parseInt(indexOfTaskFiltered)-1;
+
+                    if((indexOfTaskFilteredConverted > tasks.size()) || (indexOfTaskFilteredConverted <= 0)) {
+                        System.out.println("O número digitado não condiz com nenhuma tarefa criada: " + indexOfTaskFilteredConverted);
+                        break;
+                    }
+
+                    System.out.println("Tarefa a ser alterada: " + tasks.get(indexOfTaskFilteredForSearch));
+                    System.out.println("Informe o novo nome da tarefa: ");
+                    String newTaskName = scanner.nextLine();
+                    tasks.set(indexOfTaskFilteredForSearch, newTaskName);
+                    break;
+
                 case 9:
                     systemRunning = false;
             }
