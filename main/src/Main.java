@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         boolean systemRunning = true;
         Scanner scanner = new Scanner(System.in);
-        List tasks = new ArrayList<String>();
+        List<String> tasks = new ArrayList<>();
 
         while (systemRunning) {
             System.out.println("Bem-vindo ao sistema de tarefas");
@@ -29,7 +29,7 @@ public class Main {
                     break;
                 case 2:
                     for (int index = 0; index < tasks.size(); index++) {
-                        Integer viewIndex = index + 1;
+                        int viewIndex = index + 1;
                         System.out.println(viewIndex + " - " + tasks.get(index));
                     }
                     break;
@@ -39,7 +39,7 @@ public class Main {
                         break;
                     }
                     for (int index = 0; index < tasks.size(); index++) {
-                        Integer viewIndex = index + 1;
+                        int viewIndex = index + 1;
                         System.out.println(viewIndex + " - " + tasks.get(index));
                     }
                     System.out.println("Informe o número da tarefa a ser atualizada");
