@@ -29,9 +29,12 @@ replay_pid*
 
 # Compilados
 *.class
-/out/                                                                                                       
+/out/
 /target/
 
 # Maven/Gradle (se usar no futuro)
 *.jar
 *.war
+
+# Documentations
+layer_and_project_struct.txt
