@@ -29,7 +29,7 @@ public class TaskService {
 
     public Task findById(int id){
         try {
-            Objects.checkIndex(id, taskRepository.findAll().size());
+            Objects.checkIndex(id-1, taskRepository.findAll().size());
             System.out.println("Buscando tarefa " + id + " nas tarefas cadastradas");
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Código inválido: " + e.getMessage());
@@ -39,7 +39,7 @@ public class TaskService {
 
     public void updateTask(int id, String newName) {
         try {
-            Objects.checkIndex(id, taskRepository.findAll().size());
+            Objects.checkIndex(id-1, taskRepository.findAll().size());
             System.out.println("Buscando tarefa " + id + " nas tarefas cadastradas");
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Código inválido: " + e.getMessage());
@@ -49,7 +49,7 @@ public class TaskService {
 
     public void deleteTask(int id) {
         try {
-            Objects.checkIndex(id, taskRepository.findAll().size());
+            Objects.checkIndex(id-1, taskRepository.findAll().size());
             System.out.println("Buscando tarefa " + id + " nas tarefas cadastradas");
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Código inválido: " + e.getMessage());
