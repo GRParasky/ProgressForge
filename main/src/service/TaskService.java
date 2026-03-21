@@ -5,6 +5,7 @@ import repository.TaskRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class TaskService {
 
@@ -27,14 +28,32 @@ public class TaskService {
     }
 
     public Task findById(int id){
+        try {
+            Objects.checkIndex(id, taskRepository.findAll().size());
+            System.out.println("Buscando tarefa " + id + " nas tarefas cadastradas");
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Código inválido: " + e.getMessage());
+        }
         return taskRepository.findById(id);
     }
 
     public void updateTask(int id, String newName) {
+        try {
+            Objects.checkIndex(id, taskRepository.findAll().size());
+            System.out.println("Buscando tarefa " + id + " nas tarefas cadastradas");
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Código inválido: " + e.getMessage());
+        }
         taskRepository.updateTask(id, newName);
     }
 
     public void deleteTask(int id) {
+        try {
+            Objects.checkIndex(id, taskRepository.findAll().size());
+            System.out.println("Buscando tarefa " + id + " nas tarefas cadastradas");
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Código inválido: " + e.getMessage());
+        }
         taskRepository.deleteTask(id);
     }
 
