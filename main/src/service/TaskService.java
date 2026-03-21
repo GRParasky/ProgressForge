@@ -16,7 +16,7 @@ public class TaskService {
     }
 
     public void createTask(String name){
-        if(name.length() <= 3 || name.length() > 60) {
+        if((name == null) || (name.length() <= 3 || name.length() > 60)) {
             System.out.println("Nome da nova tarefa incompatível. Nomes precisam ter entre 4 a 60 caracteres");
             return;
         }
