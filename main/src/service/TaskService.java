@@ -33,6 +33,7 @@ public class TaskService {
             System.out.println("Buscando tarefa " + id + " nas tarefas cadastradas");
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Código inválido: " + e.getMessage());
+            return null;
         }
         return taskRepository.findById(id);
     }
@@ -43,6 +44,7 @@ public class TaskService {
             System.out.println("Buscando tarefa " + id + " nas tarefas cadastradas");
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Código inválido: " + e.getMessage());
+            return;
         }
         taskRepository.updateTask(id, newName);
     }
@@ -53,6 +55,7 @@ public class TaskService {
             System.out.println("Buscando tarefa " + id + " nas tarefas cadastradas");
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Código inválido: " + e.getMessage());
+            return;
         }
         taskRepository.deleteTask(id);
     }
