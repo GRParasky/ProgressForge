@@ -1,4 +1,7 @@
-import java.util.ArrayList;
+import model.Task;
+import repository.TaskRepository;
+import service.TaskService;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -6,7 +9,10 @@ public class Main {
     public static void main(String[] args) {
         boolean systemRunning = true;
         Scanner scanner = new Scanner(System.in);
-        List<String> tasks = new ArrayList<>();
+        TaskRepository repository = new TaskRepository();
+        TaskService service = new TaskService(repository);
+
+        List<Task> tasks = service.findAll();
 
         while (systemRunning) {
             System.out.println("Bem-vindo ao sistema de tarefas");
@@ -24,13 +30,13 @@ public class Main {
             switch(option){
                 case 1:
                     System.out.println("Informe a tarefa a ser adicionada: ");
-                    String task = scanner.nextLine();
-                    tasks.add(task);
+                    String taskName = scanner.nextLine();
+                    service.createTask(taskName);
                     break;
                 case 2:
                     for (int index = 0; index < tasks.size(); index++) {
                         int viewIndex = index + 1;
-                        System.out.println(viewIndex + " - " + tasks.get(index));
+                        System.out.println(viewIndex + " - " + tasks.get(index).getName());
                     }
                     break;
                 case 3:
@@ -40,22 +46,21 @@ public class Main {
                     }
                     for (int index = 0; index < tasks.size(); index++) {
                         int viewIndex = index + 1;
-                        System.out.println(viewIndex + " - " + tasks.get(index));
+                        System.out.println(viewIndex + " - " + tasks.get(index).getName());
                     }
                     System.out.println("Informe o número da tarefa a ser atualizada");
                     String indexOfTaskFiltered = scanner.nextLine();
                     int indexOfTaskFilteredConverted = Integer.parseInt(indexOfTaskFiltered);
-                    int indexOfTaskFilteredForSearch = Integer.parseInt(indexOfTaskFiltered)-1;
 
                     if((indexOfTaskFilteredConverted > tasks.size()) || (indexOfTaskFilteredConverted <= 0)) {
                         System.out.println("O número digitado não condiz com nenhuma tarefa criada: " + indexOfTaskFilteredConverted);
                         break;
                     }
 
-                    System.out.println("Tarefa a ser alterada: " + tasks.get(indexOfTaskFilteredForSearch));
+                    System.out.println("Tarefa a ser alterada: " + tasks.get(indexOfTaskFilteredConverted-1).getName());
                     System.out.println("Informe o novo nome da tarefa: ");
                     String newTaskName = scanner.nextLine();
-                    tasks.set(indexOfTaskFilteredForSearch, newTaskName);
+                    service.updateTask(indexOfTaskFilteredConverted, newTaskName);
                     break;
 
                 case 9:
