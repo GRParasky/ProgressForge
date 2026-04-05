@@ -20,6 +20,7 @@ public class Main {
                     "1 - Adicionar tarefa\n" +
                     "2 - Ler tarefas\n" +
                     "3 - Atualizar tarefa\n" +
+                    "4 - Deletar tarefa\n" +
                     "9 - Sair\n" +
                     "------------"
             );
@@ -65,6 +66,36 @@ public class Main {
                     System.out.println("Informe o novo nome da tarefa: ");
                     String newTaskName = scanner.nextLine();
                     service.updateTask(indexOfTaskFilteredConverted, newTaskName);
+                    break;
+
+                case 4:
+                    if(tasks.isEmpty()){
+                        System.out.println("Não há nenhuma tarefa salva");
+                        break;
+                    }
+                    for (int index = 0; index < tasks.size(); index++) {
+                        int viewIndex = index + 1;
+                        System.out.println(viewIndex + " - " + tasks.get(index).getName());
+                    }
+                    System.out.println("Informe o número da tarefa a ser excluída: ");
+                    String indexOfTaskExclude = scanner.nextLine();
+                    int indexOfTaskExcludeConverted = Integer.parseInt(indexOfTaskExclude);
+
+                    if((indexOfTaskExcludeConverted > tasks.size()) || (indexOfTaskExcludeConverted <= 0)) {
+                        System.out.println("O número digitado não condiz com nenhuma tarefa criada: " + indexOfTaskExcludeConverted);
+                        break;
+                    }
+
+                    System.out.println("Tarefa a ser excluída: " + tasks.get(indexOfTaskExcludeConverted-1).getName());
+                    System.out.println("Deseja realmente excluir a task: " + tasks.get(indexOfTaskExcludeConverted-1).getName() + "? Y/N");
+                    String confirmation = scanner.nextLine();
+                    if(confirmation.equals("Y")){
+                        service.deleteTask(indexOfTaskExcludeConverted);
+                    } else {
+                        System.out.println("Operação cancelada pelo usuário!");
+                        break;
+                    }
+
                     break;
 
                 case 9:
