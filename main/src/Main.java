@@ -6,6 +6,22 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+    private static int selecionarTarefa(List<Task> tasks, Scanner scanner, String mensagem) {
+        for (int index = 0; index < tasks.size(); index++) {
+            int viewIndex = index + 1;
+            System.out.println(viewIndex + " - " + tasks.get(index).getName());
+        }
+        System.out.println("Informe o número da tarefa a ser " + mensagem + ": ");
+        int id = Integer.parseInt(scanner.nextLine());
+
+        if (id <= 0 || id > tasks.size()) {
+            System.out.println("Número inválido: " + id);
+            return -1;
+        }
+        return id;
+    }
+
+
     public static void main(String[] args) {
         boolean systemRunning = true;
         Scanner scanner = new Scanner(System.in);
@@ -49,18 +65,7 @@ public class Main {
                         System.out.println("Não há nenhuma tarefa salva");
                         break;
                     }
-                    for (int index = 0; index < tasks.size(); index++) {
-                        int viewIndex = index + 1;
-                        System.out.println(viewIndex + " - " + tasks.get(index).getName());
-                    }
-                    System.out.println("Informe o número da tarefa a ser atualizada");
-                    String indexOfTaskFiltered = scanner.nextLine();
-                    int indexOfTaskFilteredConverted = Integer.parseInt(indexOfTaskFiltered);
-
-                    if((indexOfTaskFilteredConverted > tasks.size()) || (indexOfTaskFilteredConverted <= 0)) {
-                        System.out.println("O número digitado não condiz com nenhuma tarefa criada: " + indexOfTaskFilteredConverted);
-                        break;
-                    }
+                    int indexOfTaskFilteredConverted = selecionarTarefa(tasks, scanner, "atualizada");
 
                     System.out.println("Tarefa a ser alterada: " + tasks.get(indexOfTaskFilteredConverted-1).getName());
                     System.out.println("Informe o novo nome da tarefa: ");
@@ -73,18 +78,7 @@ public class Main {
                         System.out.println("Não há nenhuma tarefa salva");
                         break;
                     }
-                    for (int index = 0; index < tasks.size(); index++) {
-                        int viewIndex = index + 1;
-                        System.out.println(viewIndex + " - " + tasks.get(index).getName());
-                    }
-                    System.out.println("Informe o número da tarefa a ser excluída: ");
-                    String indexOfTaskExclude = scanner.nextLine();
-                    int indexOfTaskExcludeConverted = Integer.parseInt(indexOfTaskExclude);
-
-                    if((indexOfTaskExcludeConverted > tasks.size()) || (indexOfTaskExcludeConverted <= 0)) {
-                        System.out.println("O número digitado não condiz com nenhuma tarefa criada: " + indexOfTaskExcludeConverted);
-                        break;
-                    }
+                    int indexOfTaskExcludeConverted = selecionarTarefa(tasks, scanner, "deletada");
 
                     System.out.println("Tarefa a ser excluída: " + tasks.get(indexOfTaskExcludeConverted-1).getName());
                     System.out.println("Deseja realmente excluir a task: " + tasks.get(indexOfTaskExcludeConverted-1).getName() + "? Y/N");
