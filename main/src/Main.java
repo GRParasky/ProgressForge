@@ -34,13 +34,17 @@ public class Main {
                     service.createTask(taskName);
                     break;
                 case 2:
+                    if(tasks.isEmpty()){
+                        System.out.println("Não há nenhuma tarefa salva");
+                        break;
+                    }
                     for (int index = 0; index < tasks.size(); index++) {
                         int viewIndex = index + 1;
                         System.out.println(viewIndex + " - " + tasks.get(index).getName());
                     }
                     break;
                 case 3:
-                    if(tasks.size() == 0){
+                    if(tasks.isEmpty()){
                         System.out.println("Não há nenhuma tarefa salva");
                         break;
                     }
